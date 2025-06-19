@@ -7,10 +7,8 @@ $username = $_POST['username'];
 $password = md5($_POST['password']);
 
 // Validasi input
-$query = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
-$query->bind_param("ss", $username, $password);
-$query->execute();
-$result = $query->get_result();
+$query = "SELECT * FROM users WHERE username = '$username' AND password = '$password'";
+$result = $conn->query($query);
 
 // Cek apakah ada hasil yang ditemukan
 if ($result->num_rows === 1) {

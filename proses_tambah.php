@@ -12,7 +12,6 @@ if ($price <= 1000) {
 }
 
 // Validasi input
-$stmt = $conn->prepare("INSERT INTO menu (name, category, price) VALUES (?, ?, ?)");
-$stmt->bind_param("ssi", $name, $category, $price);
-$stmt->execute();
+$sql = "INSERT INTO menu (name, category, price) VALUES ('$name', '$category', '$price')";
+$conn->query($sql);
 header("Location: home.php");
