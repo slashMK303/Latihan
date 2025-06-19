@@ -32,6 +32,7 @@ $menu = $conn->query("SELECT * FROM menu");
                 <th>Nama</th>
                 <th>Kategori</th>
                 <th>Harga</th>
+                <th>Aksi</th>
             </tr>
             <?php $no = 1;
             while ($row = $menu->fetch_assoc()) : ?>
@@ -40,6 +41,9 @@ $menu = $conn->query("SELECT * FROM menu");
                     <td><?= $row['name'] ?></td>
                     <td><?= $row['category'] ?></td>
                     <td>Rp<?= number_format($row['price']) ?></td>
+                    <td>
+                        <a href="proses_hapus.php?id=<?= $row['id'] ?>" onclick="return confirm('Yakin ingin menghapus menu ini?');">Hapus</a>
+                    </td>
                 </tr>
             <?php endwhile; ?>
         </table>

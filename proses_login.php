@@ -11,9 +11,8 @@ $query = "SELECT * FROM users WHERE username = '$username' AND password = '$pass
 $result = $conn->query($query);
 
 // Cek apakah ada hasil yang ditemukan
-if ($result->num_rows === 1) {
-    $user = $result->fetch_assoc();
-    $_SESSION['username'] = $user['username'];
+if ($result->num_rows) {
+    $_SESSION['username'] = $username;
     header("Location: home.php");
     exit();
 }
